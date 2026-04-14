@@ -60,9 +60,21 @@ const uploadResume = multer({
 // Nodemailer Transporter Configuration for Google SMTP
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    }
+});
+
+// Verify connection configuration on startup
+transporter.verify((error, success) => {
+    if (error) {
+        console.error('Nodemailer Verification Error:', error);
+    } else {
+        console.log('Nodemailer is ready to send notifications');
     }
 });
 
