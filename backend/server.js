@@ -60,24 +60,21 @@ const uploadResume = multer({
 // Nodemailer Transporter Configuration for Google SMTP
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    },
-    logger: true,
-    debug: true
+    }
 });
 
-// Deep connection verification on startup
-console.log('Testing Email Transporter configuration...');
+// Verify connection configuration on startup
 transporter.verify((error, success) => {
     if (error) {
-        console.error('--- NODEMAILER CONFIGURATION ERROR ---');
-        console.error('Message:', error.message);
-        console.error('Code:', error.code);
-        console.error('--------------------------------------');
+        console.error('Nodemailer Verification Error:', error);
     } else {
-        console.log('✅ Nodemailer is authenticated and ready to send messages');
+        console.log('Nodemailer is ready to send notifications');
     }
 });
 
@@ -580,20 +577,14 @@ app.delete('/api/gallery/:id', authenticateToken, async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
-        console.log(`Contact Request Received from: ${email}`);
-        
         const newContact = new Contact({ name, email, subject, message });
         await newContact.save();
-        console.log('Message saved to Database successfully.');
 
         // Retrieve admin emails for contact notification
         const admins = await Admin.find({});
-        console.log(`Database lookup: Found ${admins.length} admins.`);
-        
-        const adminEmails = admins.map(a => a.email).filter(e => !!e).join(', ');
+        const adminEmails = admins.map(a => a.email).join(', ');
 
         if (adminEmails) {
-            console.log(`Attempting to send email to: ${adminEmails}`);
             // Send Email Notification (Background)
             const mailOptions = {
                 from: process.env.EMAIL_USER,
