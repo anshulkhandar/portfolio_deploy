@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="project.css">
+</head>
+<body class="project-detail-page">
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                <span class="logo-text">Anshul<span>.</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-main">
+        <div class="container">
+            <div id="loader" class="loader-container">
+                <div class="spinner"></div>
+                <p>Loading project details...</p>
+            </div>
+
+            <div id="projectContent" class="project-content-detail" style="display: none;">
+                <div class="project-header-info">
+                    <span id="projectCategory" class="category-tag">Category</span>
+                    <h1 id="projectTitle">Project Title</h1>
+                </div>
+
+                <div class="project-media-showcase">
+                    <div class="video-wrapper">
+                        <iframe id="projectVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-info-grid">
+                    <div class="project-main-text">
+                        <h2>About the Project</h2>
+                        <p id="projectDescription"></p>
+                        
+                        <div class="tech-stack-section">
+                            <h3>Technologies Used</h3>
+                            <div id="projectTech" class="tech-tags-container"></div>
+                        </div>
+                    </div>
+
+                    <div class="project-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Project Links</h3>
+                            <div class="sidebar-links">
+                                <a id="githubBtn" href="#" target="_blank" class="btn btn-github"><i class="fab fa-github"></i> View Code</a>
+                                <a id="liveBtn" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-card gallery-sidebar">
+                            <h3>Gallery</h3>
+                            <div id="projectGallery" class="mini-gallery"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Anshul Khandar. Built with Passion.</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="project.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Portfolio Management</title>
+    <meta name="description" content="Admin Dashboard for Portfolio Management">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="dashboard_74829.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Portal</span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <span class="nav-label">Dashboard</span>
+                <a href="#overview" class="nav-item active" data-section="overview">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <span class="nav-label">Content Management</span>
+                <a href="#skills" class="nav-item" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#education" class="nav-item" data-section="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </a>
+                <a href="#experience" class="nav-item" data-section="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="#projects" class="nav-item" data-section="projects">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#gallery" class="nav-item" data-section="gallery">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <span class="nav-label">Communication</span>
+                <a href="#messages" class="nav-item" data-section="messages">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                    <span class="badge" id="messageBadge">0</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <span class="nav-label">Settings</span>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name" id="userName">Admin</span>
+                    <span class="user-role">Administrator</span>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="page-title" id="pageTitle">Dashboard Overview</h1>
+            <div class="header-actions">
+                <a href="index.html" target="_blank" class="header-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>View Site</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Overview Section -->
+            <section class="section active" id="overviewSection">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon skills">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsSkills">0</h3>
+                            <p>Total Skills</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon education">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsEducation">0</h3>
+                            <p>Education Entries</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon experience">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsExperience">0</h3>
+                            <p>Experience Entries</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon projects">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsProjects">0</h3>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon gallery">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsGallery">0</h3>
+                            <p>Gallery Items</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon messages">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="statsMessages">0</h3>
+                            <p>Total Messages</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="welcome-card">
+                    <div class="welcome-content">
+                        <h2>Welcome to Admin Dashboard</h2>
+                        <p>Manage your portfolio content, view messages, and customize your site from this central hub.</p>
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="showSection('skills')">
+                                <i class="fas fa-plus"></i>
+                                Add Skill
+                            </button>
+                            <button class="quick-btn" onclick="showSection('projects')">
+                                <i class="fas fa-plus"></i>
+                                Add Project
+                            </button>
+                            <button class="quick-btn" onclick="showSection('gallery')">
+                                <i class="fas fa-upload"></i>
+                                Upload Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section" id="skillsSection">
+                <div class="section-header-bar">
+                    <button class="btn btn-primary" onclick="openModal('skill')">
+                        <i class="fas fa-plus"></i>
+                        Add Skill
+                    </button>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table" id="skillsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Level</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section" id="educationSection">
+                <div class="section-header-bar">
+                    <button class="btn btn-primary" onclick="openModal('education')">
+                        <i class="fas fa-plus"></i>
+                        Add Education
+                    </button>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table" id="educationTable">
+                        <thead>
+                            <tr>
+                                <th>Institution</th>
+                                <th>Degree</th>
+                                <th>Duration</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section" id="experienceSection">
+                <div class="section-header-bar">
+                    <button class="btn btn-primary" onclick="openModal('experience')">
+                        <i class="fas fa-plus"></i>
+                        Add Experience
+                    </button>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table" id="experienceTable">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Position</th>
+                                <th>Duration</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section" id="projectsSection">
+                <div class="section-header-bar">
+                    <button class="btn btn-primary" onclick="openModal('project')">
+                        <i class="fas fa-plus"></i>
+                        Add Project
+                    </button>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table" id="projectsTable">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Technologies</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="section" id="gallerySection">
+                <div class="section-header-bar">
+                    <button class="btn btn-primary" onclick="openModal('gallery')">
+                        <i class="fas fa-upload"></i>
+                        Upload Image
+                    </button>
+                </div>
+                <div class="gallery-grid-admin" id="galleryGridAdmin"></div>
+            </section>
+
+            <!-- Messages Section -->
+            <section class="section" id="messagesSection">
+                <div class="messages-list" id="messagesList"></div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="section" id="settingsSection">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+                    <!-- Resume Management -->
+                    <div class="settings-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <h3 style="margin-bottom: 1rem;"><i class="fas fa-file-pdf"></i> Manage Resume</h3>
+                        <div id="resumeStatus" style="margin-bottom: 1rem; color: var(--text-secondary);">Loading status...</div>
+                        
+                        <form id="resumeUploadForm" onsubmit="uploadResume(event)" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Upload New Resume (PDF only)</label>
+                                <input type="file" name="resume" accept="application/pdf" required style="margin-bottom: 1rem;">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="uploadResumeBtn">Upload Resume</button>
+                        </form>
+                        
+                        <div style="margin-top: 1rem;">
+                            <button id="deleteResumeBtn" class="btn btn-danger" style="display: none;" onclick="deleteResume()">Delete Current Resume</button>
+                        </div>
+                    </div>
+
+                    <!-- Admins Management -->
+                    <div class="settings-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <div class="section-header-bar" style="margin-bottom: 1rem;">
+                            <h3 style="margin: 0;"><i class="fas fa-shield-alt"></i> Administrators</h3>
+                            <button class="btn btn-primary btn-sm" onclick="openModal('admin')">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                        </div>
+                        <div class="data-table-container">
+                            <table class="data-table" id="adminsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic form content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-overlay" onclick="closeDeleteModal()"></div>
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>Confirm Delete</h3>
+                <button class="modal-close" onclick="closeDeleteModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="delete-message">Are you sure you want to delete this item? This action cannot be undone.</p>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                    <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Success!</span>
+        </div>
+    </div>
+
+    <script src="dashboard_74829.js"></script>
+</body>
+</html>

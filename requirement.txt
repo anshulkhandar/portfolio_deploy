@@ -1,0 +1,8 @@
+# Base Environment Setup for Windows
+# Install via: pip install -r requirement.txt
+
+# Node.js installer wrapper for environment bootstrapping
+nodejs-bin
+
+# Optional utilities
+python-dotenv
