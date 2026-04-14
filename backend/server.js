@@ -59,13 +59,15 @@ const uploadResume = multer({
 
 // Nodemailer Transporter Configuration for Google SMTP
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
     host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false, // Use STARTTLS
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false // Helps prevent hangs on cloud servers
     }
 });
 
@@ -594,6 +596,7 @@ app.post('/api/contact', async (req, res) => {
         const adminEmails = admins.map(a => a.email).filter(e => !!e).join(', ');
 
         if (adminEmails) {
+            console.log(`Attempting to send email to: ${adminEmails}`);
             // Send Email Notification (Background)
             const mailOptions = {
                 from: process.env.EMAIL_USER,
