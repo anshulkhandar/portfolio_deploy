@@ -69,12 +69,16 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Verify connection configuration on startup
+// Deep connection verification on startup
+console.log('Testing Email Transporter configuration...');
 transporter.verify((error, success) => {
     if (error) {
-        console.error('Nodemailer Verification Error:', error);
+        console.error('--- NODEMAILER CONFIGURATION ERROR ---');
+        console.error('Message:', error.message);
+        console.error('Code:', error.code);
+        console.error('--------------------------------------');
     } else {
-        console.log('Nodemailer is ready to send notifications');
+        console.log('✅ Nodemailer is authenticated and ready to send messages');
     }
 });
 
@@ -577,12 +581,17 @@ app.delete('/api/gallery/:id', authenticateToken, async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
+        console.log(`Contact Request Received from: ${email}`);
+        
         const newContact = new Contact({ name, email, subject, message });
         await newContact.save();
+        console.log('Message saved to Database successfully.');
 
         // Retrieve admin emails for contact notification
         const admins = await Admin.find({});
-        const adminEmails = admins.map(a => a.email).join(', ');
+        console.log(`Database lookup: Found ${admins.length} admins.`);
+        
+        const adminEmails = admins.map(a => a.email).filter(e => !!e).join(', ');
 
         if (adminEmails) {
             // Send Email Notification (Background)
