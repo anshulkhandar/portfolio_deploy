@@ -59,16 +59,13 @@ const uploadResume = multer({
 
 // Nodemailer Transporter Configuration for Google SMTP
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // Use STARTTLS
+    service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    tls: {
-        rejectUnauthorized: false // Helps prevent hangs on cloud servers
-    }
+    logger: true,
+    debug: true
 });
 
 // Deep connection verification on startup
