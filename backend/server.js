@@ -72,6 +72,9 @@ const transporter = nodemailer.createTransport({
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Essential for Render deployment to handle HTTPS redirects correctly
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 
@@ -95,7 +98,8 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/api/auth/google/callback"
+    callbackURL: "/api/auth/google/callback",
+    proxy: true
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
