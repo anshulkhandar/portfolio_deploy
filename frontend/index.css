@@ -220,8 +220,32 @@ img {
     font-size: 1rem;
     color: var(--text-muted);
     max-width: 500px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.8;
+}
+
+.hero-personal-details {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.hero-personal-details i {
+    color: var(--primary-purple);
+    font-size: 1.1rem;
+}
+
+.hero-personal-details a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.hero-personal-details a:hover {
+    color: var(--primary-purple);
 }
 
 .hero-buttons {
@@ -388,10 +412,24 @@ section {
     background: var(--primary-bg);
 }
 
+.skills .section-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .skills .section-container {
+        padding: 0 2.5rem;
+    }
+}
+
 .skills-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    width: 100%;
 }
 
 .skill-card {
@@ -577,9 +615,22 @@ section {
     background: var(--secondary-bg);
 }
 
+.projects .section-container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .projects .section-container {
+        padding: 0 2.5rem;
+    }
+}
+
 .projects-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2rem;
 }
 
@@ -591,6 +642,7 @@ section {
     transition: var(--transition-medium);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .project-card:hover {
@@ -656,6 +708,9 @@ section {
 
 .project-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .project-title {
@@ -670,6 +725,10 @@ section {
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-tech {
@@ -682,6 +741,7 @@ section {
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .project-link {

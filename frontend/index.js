@@ -363,7 +363,12 @@ async function loadProjects() {
         
         container.innerHTML = projects.map((project, index) => {
             const hasImages = project.images && project.images.length > 0;
-            const videoId = project.videoLink ? project.videoLink.split('/').pop().split('?')[0] : '';
+            // Convert video link to embed format
+            let embedUrl = project.videoLink || '';
+            if (embedUrl.includes('watch?v=')) {
+                embedUrl = embedUrl.replace('watch?v=', 'embed/');
+            }
+            const videoId = embedUrl ? embedUrl.split('/').pop().split('?')[0] : '';
             
             return `
                 <div class="project-card fade-in" style="animation-delay: ${index * 0.1}s" onclick="location.href='project.html?id=${project._id}'">
@@ -371,7 +376,7 @@ async function loadProjects() {
                         ${project.videoLink ? `
                             <div class="project-video">
                                 <iframe 
-                                    src="${escapeHtml(project.videoLink)}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&showinfo=0&rel=0&enablejsapi=1" 
+                                    src="${escapeHtml(embedUrl)}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&showinfo=0&rel=0&enablejsapi=1" 
                                     frameborder="0" 
                                     allow="autoplay; encrypted-media" 
                                     allowfullscreen
@@ -472,7 +477,7 @@ function initProjectCarousels() {
                 }
                 
                 nextSlide.classList.add('active');
-            }, 2000);
+            }, 1200);
         });
         
         card.addEventListener('mouseleave', () => {

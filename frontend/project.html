@@ -36,49 +36,90 @@
             </div>
 
             <div id="projectContent" class="project-content-detail" style="display: none;">
-                <div class="project-header-info">
+
+                <!-- SECTION 1: Hero Header -->
+                <section class="project-hero-header">
+                    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
                     <span id="projectCategory" class="category-tag">Category</span>
                     <h1 id="projectTitle">Project Title</h1>
-                </div>
+                    <p id="projectSummary" class="project-summary"></p>
+                </section>
 
-                <div class="project-media-showcase">
-                    <div class="video-wrapper">
-                        <iframe id="projectVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <!-- SECTION 2: Image Carousel -->
+                <section id="imageCarouselSection" class="image-carousel-section">
+                    <div class="carousel-main">
+                        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-viewport" id="carouselViewport">
+                            <!-- Images injected by JS -->
+                        </div>
+                        <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                </div>
+                    <div class="carousel-thumbnails" id="carouselThumbnails">
+                        <!-- Thumbnails injected by JS -->
+                    </div>
+                </section>
 
+                <!-- SECTION 3: Video (optional) -->
+                <section id="videoSection" class="video-section">
+                    <h2 class="section-label"><i class="fas fa-play-circle"></i> Project Demo</h2>
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe id="projectVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4 & 5: Content + Sidebar Grid -->
                 <div class="project-info-grid">
                     <div class="project-main-text">
-                        <h2>About the Project</h2>
-                        <p id="projectDescription"></p>
-                        
-                        <div class="tech-stack-section">
-                            <h3>Technologies Used</h3>
+                        <!-- About Card -->
+                        <div class="content-card">
+                            <h2><i class="fas fa-info-circle"></i> About the Project</h2>
+                            <p id="projectDescription"></p>
+                        </div>
+
+                        <!-- Tech Stack Card -->
+                        <div class="content-card" id="techStackCard">
+                            <h2><i class="fas fa-layer-group"></i> Technologies Used</h2>
                             <div id="projectTech" class="tech-tags-container"></div>
                         </div>
                     </div>
 
-                    <div class="project-sidebar">
-                        <div class="sidebar-card">
-                            <h3>Project Links</h3>
+                    <!-- Sidebar -->
+                    <aside class="project-sidebar">
+                        <div class="sidebar-card" id="linksCard">
+                            <h3><i class="fas fa-link"></i> Project Links</h3>
                             <div class="sidebar-links">
                                 <a id="githubBtn" href="#" target="_blank" class="btn btn-github"><i class="fab fa-github"></i> View Code</a>
                                 <a id="liveBtn" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                             </div>
                         </div>
 
-                        <div class="sidebar-card gallery-sidebar">
-                            <h3>Gallery</h3>
+                        <div class="sidebar-card gallery-sidebar" id="gallerySidebarCard">
+                            <h3><i class="fas fa-images"></i> Gallery</h3>
                             <div id="projectGallery" class="mini-gallery"></div>
                         </div>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Project image">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
     <footer class="footer">
-        <p>&copy; 2024 Anshul Khandar. Built with Passion.</p>
+        <p>&copy; 2026 Anshul Khandar. Built with Passion.</p>
     </footer>
 
     <!-- Custom JS -->
