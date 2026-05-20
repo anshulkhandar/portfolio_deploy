@@ -161,6 +161,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Portfolio API! Server is running.' });
 });
 
+// --- HEALTH CHECK (public, no auth, no DB) ---
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 // --- AUTH ROUTES ---
 app.post('/api/login', async (req, res) => {
     try {
