@@ -1,7 +1,7 @@
 // ===== API BASE URL =====
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000'
-    : 'https://portfolio-deploy-bsc7.onrender.com'; // backend link
+    : 'https://portfolio-deploy-7mxn.onrender.com'; // backend link
 
 // ===== DOM ELEMENTS =====
 const loginForm = document.getElementById('loginForm');
