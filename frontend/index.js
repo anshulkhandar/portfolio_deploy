@@ -97,7 +97,36 @@ async function loadResume() {
         const downloadBtn = document.getElementById('downloadResumeBtn');
         if (data && data.url) {
             downloadBtn.href = data.url;
+            downloadBtn.download = 'Anshul_Khandar_Resume.pdf';
             downloadBtn.style.display = 'inline-flex';
+            
+            downloadBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const originalHtml = downloadBtn.innerHTML;
+                try {
+                    downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Downloading...</span>';
+                    
+                    const fetchResponse = await fetch(data.url);
+                    if (!fetchResponse.ok) throw new Error('Network response was not ok');
+                    const blob = await fetchResponse.blob();
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    
+                    const tempLink = document.createElement('a');
+                    tempLink.href = blobUrl;
+                    tempLink.download = 'Anshul_Khandar_Resume.pdf';
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    
+                    document.body.removeChild(tempLink);
+                    window.URL.revokeObjectURL(blobUrl);
+                } catch (error) {
+                    console.error('Error downloading resume:', error);
+                    // Fallback to opening in new tab if CORS or other issue occurs
+                    window.open(data.url, '_blank');
+                } finally {
+                    downloadBtn.innerHTML = originalHtml;
+                }
+            });
         }
     } catch (error) {
         console.error('Error loading resume:', error);
